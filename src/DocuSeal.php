@@ -5,6 +5,8 @@ namespace DocuSealCo\DocuSeal;
 use DocuSealCo\DocuSeal\Resource\Submissions;
 use DocuSealCo\DocuSeal\Resource\Submitters;
 use DocuSealCo\DocuSeal\Resource\Templates;
+use Saloon\Contracts\Authenticator;
+use Saloon\Http\Auth\HeaderAuthenticator;
 use Saloon\Http\Connector;
 
 /**
@@ -15,8 +17,13 @@ use Saloon\Http\Connector;
 class DocuSeal extends Connector
 {
 
-    public function __construct(public string $baseUrl = 'https://api.docuseal.co')
+    public function __construct(public string $token, public string $baseUrl = 'https://api.docuseal.co')
     {
+    }
+
+    protected function defaultAuth(): ?Authenticator
+    {
+        return new HeaderAuthenticator($this->token, 'X-Auth-Token');
     }
 
     public function resolveBaseUrl(): string

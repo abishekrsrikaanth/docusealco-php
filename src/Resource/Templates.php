@@ -11,17 +11,22 @@ use DocuSealCo\DocuSeal\Requests\Templates\GetTemplate;
 use DocuSealCo\DocuSeal\Requests\Templates\ListAllTemplates;
 use DocuSealCo\DocuSeal\Requests\Templates\MoveTemplateToDifferentFolder;
 use DocuSealCo\DocuSeal\Resource;
+use Saloon\Exceptions\Request\FatalRequestException;
+use Saloon\Exceptions\Request\RequestException;
 use Saloon\Http\Response;
 
 class Templates extends Resource
 {
-	/**
-	 * @param string $applicationKey The unique applications-specific identifier provided for the template via API or Embedded template form builder. Allows to receive only templates with your specified application key.
-	 * @param string $folder Filter templates by folder name.
-	 * @param bool $archived Get only archived templates instead of active ones.
-	 * @param int $limit The number of templates to return. Default value is 10. Maximum value is 100.
-	 * @param int $before The unique identifier of the template to end the list with. Allows to receive only templates with id less than the specified value.
-	 */
+    /**
+     * @param  string|null  $applicationKey  The unique applications-specific identifier provided for the template via API or Embedded template form builder. Allows to receive only templates with your specified application key.
+     * @param  string|null  $folder  Filter templates by folder name.
+     * @param  bool  $archived  Get only archived templates instead of active ones.
+     * @param  int|null  $limit  The number of templates to return. Default value is 10. Maximum value is 100.
+     * @param  int|null  $before  The unique identifier of the template to end the list with. Allows to receive only templates with id less than the specified value.
+     * @return Response
+     * @throws FatalRequestException
+     * @throws RequestException
+     */
 	public function listAllTemplates(
 		?string $applicationKey,
 		?string $folder,
@@ -34,36 +39,48 @@ class Templates extends Resource
 	}
 
 
-	/**
-	 * @param int $id The unique identifier of the document template.
-	 */
+    /**
+     * @param  int  $id  The unique identifier of the document template.
+     * @return Response
+     * @throws FatalRequestException
+     * @throws RequestException
+     */
 	public function getTemplate(int $id): Response
 	{
 		return $this->connector->send(new GetTemplate($id));
 	}
 
 
-	/**
-	 * @param int $id The unique identifier of the document template.
-	 */
+    /**
+     * @param  int  $id  The unique identifier of the document template.
+     * @return Response
+     * @throws FatalRequestException
+     * @throws RequestException
+     */
 	public function moveTemplateToDifferentFolder(int $id): Response
 	{
 		return $this->connector->send(new MoveTemplateToDifferentFolder($id));
 	}
 
 
-	/**
-	 * @param int $id The unique identifier of the document template.
-	 */
+    /**
+     * @param  int  $id  The unique identifier of the document template.
+     * @return Response
+     * @throws FatalRequestException
+     * @throws RequestException
+     */
 	public function archiveTemplate(int $id): Response
 	{
 		return $this->connector->send(new ArchiveTemplate($id));
 	}
 
 
-	/**
-	 * @param int $id The unique identifier of the document template.
-	 */
+    /**
+     * @param  int  $id  The unique identifier of the document template.
+     * @return Response
+     * @throws FatalRequestException
+     * @throws RequestException
+     */
 	public function cloneTemplate(int $id): Response
 	{
 		return $this->connector->send(new CloneTemplate($id));
