@@ -14,26 +14,31 @@ use Saloon\Http\Connector;
  */
 class DocuSeal extends Connector
 {
-	public function resolveBaseUrl(): string
-	{
-		return 'https://api.docuseal.co';
-	}
+
+    public function __construct(public string $baseUrl = 'https://api.docuseal.co')
+    {
+    }
+
+    public function resolveBaseUrl(): string
+    {
+        return $this->baseUrl;
+    }
 
 
-	public function submissions(): Submissions
-	{
-		return new Submissions($this);
-	}
+    public function submissions(): Submissions
+    {
+        return new Submissions($this);
+    }
 
 
-	public function submitters(): Submitters
-	{
-		return new Submitters($this);
-	}
+    public function submitters(): Submitters
+    {
+        return new Submitters($this);
+    }
 
 
-	public function templates(): Templates
-	{
-		return new Templates($this);
-	}
+    public function templates(): Templates
+    {
+        return new Templates($this);
+    }
 }
