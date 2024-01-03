@@ -1,0 +1,28 @@
+{
+    "name": "docusealco/docusealco-php",
+    "description": "PHP SDK for Docuseal.co",
+    "type": "library",
+    "keywords": [
+        "docuseal",
+        "document",
+        "signing"
+    ],
+    "require": {
+        "php": "^8.1",
+        "saloonphp/saloon": "v3.x"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "DocuSealCo\\DocuSeal\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "abisheksrikaanth",
+            "email": "abishek@technicaliti.me"
+        }
+    ],
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
