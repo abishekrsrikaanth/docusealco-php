@@ -16,22 +16,26 @@ use Saloon\Traits\Body\HasJsonBody;
  * fillable fields in the document. See <a href="https://www.docuseal.co/examples/fieldtags.docx"
  * target="_blank" class="link font-bold" >https://www.docuseal.co/examples/fieldtags.docx</a> for more
  * text tag formats. Or specify the exact pixel coordinates of the document fields using `fields`
- * param.'
+ * param.
  */
 class CreateTemplateFromWordDocx extends Request implements HasBody
 {
-	use HasJsonBody;
+    use HasJsonBody;
 
-	protected Method $method = Method::POST;
-
-
-	public function resolveEndpoint(): string
-	{
-		return "/templates/docx";
-	}
+    protected Method $method = Method::POST;
 
 
-	public function __construct()
-	{
-	}
+    public function resolveEndpoint(): string
+    {
+        return "/templates/docx";
+    }
+
+
+    public function __construct(
+        protected string $name,
+        protected array $documents,
+        protected ?string $folderName = null,
+        protected ?string $applicationKey = null
+    ) {
+    }
 }

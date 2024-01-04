@@ -15,22 +15,37 @@ use Saloon\Traits\Body\HasJsonBody;
  */
 class CloneTemplate extends Request implements HasBody
 {
-	use HasJsonBody;
+    use HasJsonBody;
 
-	protected Method $method = Method::POST;
-
-
-	public function resolveEndpoint(): string
-	{
-		return "/templates/{$this->id}/clone";
-	}
+    protected Method $method = Method::POST;
 
 
-	/**
-	 * @param int $id The unique identifier of the document template.
-	 */
-	public function __construct(
-		protected int $id,
-	) {
-	}
+    public function resolveEndpoint(): string
+    {
+        return "/templates/{$this->id}/clone";
+    }
+
+
+    /**
+     * @param  int  $id  The unique identifier of the document template.
+     * @param  string|null  $name  Template name. Existing name with (Clone) suffix will be used if not specified.
+     * @param  string|null  $folderName  The folder's name to which the template should be cloned.
+     * @param  string|null  $applicationKey  Your application-specific unique string key to identify this template within your app.
+     */
+    public function __construct(
+        protected int $id,
+        protected ?string $name = null,
+        protected ?string $folderName = null,
+        protected ?string $applicationKey = null,
+    ) {
+    }
+
+    public function defaultBody(): array
+    {
+        return array_filter([
+            'name' => $this->name,
+            'folder_name' => $this->folderName,
+            'application_key' => $this->applicationKey,
+        ]);
+    }
 }

@@ -18,10 +18,10 @@ class Submitters extends Resource
      * @throws FatalRequestException
      * @throws RequestException
      */
-	public function getSubmitter(int $id): Response
-	{
-		return $this->connector->send(new GetSubmitter($id));
-	}
+    public function getSubmitter(int $id): Response
+    {
+        return $this->connector->send(new GetSubmitter($id));
+    }
 
 
     /**
@@ -30,10 +30,10 @@ class Submitters extends Resource
      * @throws FatalRequestException
      * @throws RequestException
      */
-	public function updateSubmitter(int $id): Response
-	{
-		return $this->connector->send(new UpdateSubmitter($id));
-	}
+    public function updateSubmitter(int $id): Response
+    {
+        return $this->connector->send(new UpdateSubmitter($id));
+    }
 
 
     /**
@@ -45,8 +45,8 @@ class Submitters extends Resource
      * @throws FatalRequestException
      * @throws RequestException
      */
-	public function listAllSubmitters(?int $submissionId, ?string $applicationKey, ?int $limit, ?int $before): Response
-	{
-		return $this->connector->send(new ListAllSubmitters($submissionId, $applicationKey, $limit, $before));
-	}
+    public function listAllSubmitters(?int $submissionId = null, ?string $applicationKey = null, ?int $limit = null, ?int $before = null): Response
+    {
+        return $this->connector->send(new ListAllSubmitters($submissionId, $applicationKey, $limit, $before));
+    }
 }

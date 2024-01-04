@@ -23,20 +23,21 @@ class Templates extends Resource
      * @param  bool  $archived  Get only archived templates instead of active ones.
      * @param  int|null  $limit  The number of templates to return. Default value is 10. Maximum value is 100.
      * @param  int|null  $before  The unique identifier of the template to end the list with. Allows to receive only templates with id less than the specified value.
+     * @param  int|null  $after  The unique identifier of the template to start the list from. Allows to receive only templates with id greater than the specified value.
      * @return Response
      * @throws FatalRequestException
      * @throws RequestException
      */
-	public function listAllTemplates(
-		?string $applicationKey,
-		?string $folder,
-		?bool $archived,
-		?int $limit,
-		?int $before,
-	): Response
-	{
-		return $this->connector->send(new ListAllTemplates($applicationKey, $folder, $archived, $limit, $before));
-	}
+    public function listAllTemplates(
+        ?string $applicationKey = null,
+        ?string $folder = null,
+        ?bool $archived = null,
+        ?int $limit = null,
+        ?int $before = null,
+        ?int $after = null,
+    ): Response {
+        return $this->connector->send(new ListAllTemplates($applicationKey, $folder, $archived, $limit, $before, $after));
+    }
 
 
     /**
@@ -45,10 +46,10 @@ class Templates extends Resource
      * @throws FatalRequestException
      * @throws RequestException
      */
-	public function getTemplate(int $id): Response
-	{
-		return $this->connector->send(new GetTemplate($id));
-	}
+    public function getTemplate(int $id): Response
+    {
+        return $this->connector->send(new GetTemplate($id));
+    }
 
 
     /**
@@ -57,10 +58,10 @@ class Templates extends Resource
      * @throws FatalRequestException
      * @throws RequestException
      */
-	public function moveTemplateToDifferentFolder(int $id): Response
-	{
-		return $this->connector->send(new MoveTemplateToDifferentFolder($id));
-	}
+    public function moveTemplateToDifferentFolder(int $id): Response
+    {
+        return $this->connector->send(new MoveTemplateToDifferentFolder($id));
+    }
 
 
     /**
@@ -69,10 +70,10 @@ class Templates extends Resource
      * @throws FatalRequestException
      * @throws RequestException
      */
-	public function archiveTemplate(int $id): Response
-	{
-		return $this->connector->send(new ArchiveTemplate($id));
-	}
+    public function archiveTemplate(int $id): Response
+    {
+        return $this->connector->send(new ArchiveTemplate($id));
+    }
 
 
     /**
@@ -81,26 +82,26 @@ class Templates extends Resource
      * @throws FatalRequestException
      * @throws RequestException
      */
-	public function cloneTemplate(int $id): Response
-	{
-		return $this->connector->send(new CloneTemplate($id));
-	}
+    public function cloneTemplate(int $id): Response
+    {
+        return $this->connector->send(new CloneTemplate($id));
+    }
 
 
-	public function createTemplateFromHtml(): Response
-	{
-		return $this->connector->send(new CreateTemplateFromHtml());
-	}
+    public function createTemplateFromHtml(): Response
+    {
+        return $this->connector->send(new CreateTemplateFromHtml());
+    }
 
 
-	public function createTemplateFromWordDocx(): Response
-	{
-		return $this->connector->send(new CreateTemplateFromWordDocx());
-	}
+    public function createTemplateFromWordDocx(): Response
+    {
+        return $this->connector->send(new CreateTemplateFromWordDocx());
+    }
 
 
-	public function createTemplateFromExistingPdf(): Response
-	{
-		return $this->connector->send(new CreateTemplateFromExistingPdf());
-	}
+    public function createTemplateFromExistingPdf(): Response
+    {
+        return $this->connector->send(new CreateTemplateFromExistingPdf());
+    }
 }

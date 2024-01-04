@@ -25,14 +25,15 @@ class Submissions extends Resource
      * @throws RequestException
      */
 	public function listAllSubmissions(
-		?int $templateId,
-		?string $applicationKey,
-		?string $templateFolder,
-		?int $limit,
-		?int $before,
+		?int $templateId = null,
+		?string $applicationKey = null,
+		?string $templateFolder = null,
+		?int $limit = 10,
+		?int $before = null,
+        ?int $after = null,
 	): Response
 	{
-		return $this->connector->send(new ListAllSubmissions($templateId, $applicationKey, $templateFolder, $limit, $before));
+		return $this->connector->send(new ListAllSubmissions($templateId, $applicationKey, $templateFolder, $limit, $before, $after));
 	}
 
 
