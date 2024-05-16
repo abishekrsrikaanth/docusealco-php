@@ -2,11 +2,15 @@
 
 namespace DocuSealCo\DocuSeal\Requests\Submissions;
 
-use DateTime;
+use CuyZ\Valinor\Mapper\MappingError;
+use DocuSealCo\DocuSeal\Models\Submission;
 use DocuSealCo\DocuSeal\Requests\Models\Message;
+use DocuSealCo\DocuSeal\Requests\Submissions\Concerns\HandlesDTOResponse;
+use JsonException;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
+use Saloon\Http\Response;
 use Saloon\Traits\Body\HasJsonBody;
 
 /**
@@ -17,16 +21,9 @@ use Saloon\Traits\Body\HasJsonBody;
  */
 class CreateSubmission extends Request implements HasBody
 {
-    use HasJsonBody;
+    use HasJsonBody, HandlesDTOResponse;
 
     protected Method $method = Method::POST;
-
-
-    public function resolveEndpoint(): string
-    {
-        return "/submissions";
-    }
-
 
     public function __construct(
         protected int $templateId,
@@ -36,6 +33,22 @@ class CreateSubmission extends Request implements HasBody
         protected string $order = 'preserved',
         protected ?Message $message = null
     ) {
+    }
+
+    public function resolveEndpoint(): string
+    {
+        return "/submissions";
+    }
+
+    /**
+     * @throws MappingError
+     * @throws JsonException
+     */
+    public function createDtoFromResponse(Response $response): mixed
+    {
+        $data = $response->json();
+
+        return $this->toDTOArray($data, Submission::class);
     }
 
     protected function defaultBody(): array
