@@ -4,7 +4,8 @@ namespace DocuSealCo\DocuSeal\Models;
 
 use DateTimeInterface;
 
-class Submitter {
+class Submitter
+{
     public int $id;
     public int $submission_id;
     public string $uuid;
@@ -18,10 +19,14 @@ class Submitter {
     public string $name;
     public ?string $phone;
     public ?string $external_id;
-    public ?array $metadata = [];
+    /** @var array<string,string|int|bool> */
+    public array $metadata;
     public string $status;
-    public ?array $values = [];
-    public ?array $preferences = [];
-    public ?string $role;
+    public ?string $application_key;
+    /** @var string[]|array{field:string,value:string|int|bool} */
+    public array $values;
+    /** @var array<string,string|int|bool> */
+    public array $preferences;
+    public string $role;
     public string $embed_src;
 }

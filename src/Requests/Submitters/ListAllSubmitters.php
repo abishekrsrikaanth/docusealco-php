@@ -2,7 +2,6 @@
 
 namespace DocuSealCo\DocuSeal\Requests\Submitters;
 
-use DateTime;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 

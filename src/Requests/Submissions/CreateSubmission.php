@@ -21,7 +21,8 @@ use Saloon\Traits\Body\HasJsonBody;
  */
 class CreateSubmission extends Request implements HasBody
 {
-    use HandlesDTOResponse, HasJsonBody;
+    use HandlesDTOResponse;
+    use HasJsonBody;
 
     protected Method $method = Method::POST;
 
@@ -61,21 +62,9 @@ class CreateSubmission extends Request implements HasBody
             'send_email' => $this->sendEmail,
             'send_sms' => $this->sendSms,
             'order' => $this->order,
+            'submitters' => $this->submitters,
         ];
 
-        if (isset($this->submitters)) {
-            $submitters = [];
-            foreach ($this->submitters as $submitter) {
-                $submitters[] = (array) $submitter;
-            }
-
-            $data['submission'] = $submitters;
-        }
-
-        if (isset($this->message)) {
-            $data['message'] = $this->message->toArray();
-        }
-
-        return array_filter($data);
+        return array_filter($data, fn ($value) => !is_null($value));
     }
 }

@@ -2,7 +2,6 @@
 
 namespace DocuSealCo\DocuSeal\Requests\Templates;
 
-use DateTime;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;

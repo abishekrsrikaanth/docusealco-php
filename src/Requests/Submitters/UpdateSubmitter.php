@@ -2,7 +2,6 @@
 
 namespace DocuSealCo\DocuSeal\Requests\Submitters;
 
-use DateTime;
 use DocuSealCo\DocuSeal\Requests\Models\Submitter;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;

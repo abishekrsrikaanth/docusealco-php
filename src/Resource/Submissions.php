@@ -45,9 +45,14 @@ class Submissions extends Resource
      * @throws FatalRequestException
      * @throws RequestException
      */
-    public function createSubmission(int $templateId,  array $submitters, bool $sendEmail = true,
-        bool $sendSms = false, string $order = 'preserved', ?Message $message = null): array
-    {
+    public function createSubmission(
+        int $templateId,
+        array $submitters,
+        bool $sendEmail = true,
+        bool $sendSms = false,
+        string $order = 'preserved',
+        ?Message $message = null
+    ): array {
         $response = $this->connector->send(new CreateSubmission($templateId, $submitters, $sendEmail, $sendSms, $order, $message));
 
         return $response->dtoOrFail();

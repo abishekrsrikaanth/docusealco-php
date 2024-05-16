@@ -2,7 +2,6 @@
 
 namespace DocuSealCo\DocuSeal\Requests\Templates;
 
-use DateTime;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
@@ -16,18 +15,18 @@ use Saloon\Traits\Body\HasJsonBody;
  */
 class CreateTemplateFromHtml extends Request implements HasBody
 {
-	use HasJsonBody;
+    use HasJsonBody;
 
-	protected Method $method = Method::POST;
-
-
-	public function resolveEndpoint(): string
-	{
-		return "/templates/html";
-	}
+    protected Method $method = Method::POST;
 
 
-	public function __construct()
-	{
-	}
+    public function resolveEndpoint(): string
+    {
+        return "/templates/html";
+    }
+
+
+    public function __construct()
+    {
+    }
 }

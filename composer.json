@@ -28,5 +28,10 @@
     "prefer-stable": true,
     "require-dev": {
         "laravel/pint": "^1.15"
+    },
+    "scripts": {
+        "lint": [
+            "pint"
+        ]
     }
 }

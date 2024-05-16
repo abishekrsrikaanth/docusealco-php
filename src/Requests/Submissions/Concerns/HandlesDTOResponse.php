@@ -3,6 +3,7 @@
 namespace DocuSealCo\DocuSeal\Requests\Submissions\Concerns;
 
 use CuyZ\Valinor\Mapper\MappingError;
+use CuyZ\Valinor\Mapper\Source\Source;
 use CuyZ\Valinor\MapperBuilder;
 
 trait HandlesDTOResponse
@@ -10,15 +11,16 @@ trait HandlesDTOResponse
     /**
      * @param $data
      * @param $dtoClass
-     * @return mixed|object
+     * @return array
      * @throws MappingError
      */
-    public function toDTOArray($data, $dtoClass)
+    public function toDTOArray($data, $dtoClass): array
     {
-        return (new MapperBuilder())->mapper()
+        return (new MapperBuilder())
+            ->mapper()
             ->map(
                 'array<'.$dtoClass.'>',
-                $data
+                Source::array($data)
             );
     }
 

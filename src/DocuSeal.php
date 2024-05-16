@@ -16,7 +16,6 @@ use Saloon\Http\Connector;
  */
 class DocuSeal extends Connector
 {
-
     public function __construct(public string $token, public string $baseUrl = 'https://api.docuseal.co')
     {
     }

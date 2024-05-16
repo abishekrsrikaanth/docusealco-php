@@ -4,5 +4,4 @@ namespace DocuSealCo\DocuSeal\Requests\Models;
 
 class Document
 {
-
 }
