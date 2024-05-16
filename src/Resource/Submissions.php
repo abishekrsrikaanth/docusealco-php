@@ -2,6 +2,7 @@
 
 namespace DocuSealCo\DocuSeal\Resource;
 
+use DocuSealCo\DocuSeal\Models\Submitter;
 use DocuSealCo\DocuSeal\Requests\Models\Message;
 use DocuSealCo\DocuSeal\Requests\Submissions\ArchiveSubmission;
 use DocuSealCo\DocuSeal\Requests\Submissions\CreateSubmission;
@@ -37,7 +38,14 @@ class Submissions extends Resource
         return $this->connector->send(new ListAllSubmissions($templateId, $applicationKey, $templateFolder, $limit, $before, $after));
     }
 
-    public function createSubmission(int $templateId, array $submitters, bool $sendEmail = true,
+    /**
+     * @param  Submitter[]  $submitters
+     * @return Submitter[]
+     *
+     * @throws FatalRequestException
+     * @throws RequestException
+     */
+    public function createSubmission(int $templateId,  array $submitters, bool $sendEmail = true,
         bool $sendSms = false, string $order = 'preserved', ?Message $message = null): array
     {
         $response = $this->connector->send(new CreateSubmission($templateId, $submitters, $sendEmail, $sendSms, $order, $message));
