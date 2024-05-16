@@ -21,10 +21,13 @@ use Saloon\Traits\Body\HasJsonBody;
  */
 class CreateSubmission extends Request implements HasBody
 {
-    use HasJsonBody, HandlesDTOResponse;
+    use HandlesDTOResponse, HasJsonBody;
 
     protected Method $method = Method::POST;
 
+    /**
+     * @param  Submitter[]  $submitters
+     */
     public function __construct(
         protected int $templateId,
         protected array $submitters,
@@ -37,7 +40,7 @@ class CreateSubmission extends Request implements HasBody
 
     public function resolveEndpoint(): string
     {
-        return "/submissions";
+        return '/submissions';
     }
 
     /**
@@ -63,7 +66,7 @@ class CreateSubmission extends Request implements HasBody
         if (isset($this->submitters)) {
             $submitters = [];
             foreach ($this->submitters as $submitter) {
-                $submitters[] = $submitter->toArray();
+                $submitters[] = (array) $submitter;
             }
 
             $data['submission'] = $submitters;
