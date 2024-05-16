@@ -22,7 +22,7 @@ class Submissions extends Resource
      * @param  int|null  $limit  The number of submissions to return. Default value is 10. Maximum value is 100.
      * @param  int|null  $before  The unique identifier of the submission to end the list with. Allows to receive only submissions with id less than the specified value.
      * @param  int|null  $after  The unique identifier of the submission to start the list with. Allows to receive only submissions with id greater than the specified value.
-     * @return Response
+     *
      * @throws FatalRequestException
      * @throws RequestException
      */
@@ -37,16 +37,17 @@ class Submissions extends Resource
         return $this->connector->send(new ListAllSubmissions($templateId, $applicationKey, $templateFolder, $limit, $before, $after));
     }
 
-
-    public function createSubmission(int $templateId, array $submitters, bool $sendEmail = true, bool $sendSms = false, string $order = 'preserved', ?Message $message = null): Response
+    public function createSubmission(int $templateId, array $submitters, bool $sendEmail = true,
+        bool $sendSms = false, string $order = 'preserved', ?Message $message = null): array
     {
-        return $this->connector->send(new CreateSubmission($templateId, $submitters, $sendEmail, $sendSms, $order, $message));
-    }
+        $response = $this->connector->send(new CreateSubmission($templateId, $submitters, $sendEmail, $sendSms, $order, $message));
 
+        return $response->dtoOrFail();
+    }
 
     /**
      * @param  int  $id  The unique identifier of the submission.
-     * @return Response
+     *
      * @throws FatalRequestException
      * @throws RequestException
      */
@@ -55,10 +56,9 @@ class Submissions extends Resource
         return $this->connector->send(new GetSubmission($id));
     }
 
-
     /**
      * @param  int  $id  The unique identifier of the submission.
-     * @return Response
+     *
      * @throws FatalRequestException
      * @throws RequestException
      */
@@ -66,7 +66,6 @@ class Submissions extends Resource
     {
         return $this->connector->send(new ArchiveSubmission($id));
     }
-
 
     public function createSubmissionsFromEmails(int $templateId, array $emails, $sendEmail = true, ?Message $message = null): Response
     {
