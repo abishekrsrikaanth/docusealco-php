@@ -3,6 +3,8 @@
 namespace DocuSealCo\DocuSeal\Models;
 
 use DateTime;
+use Spatie\LaravelData\Attributes\WithCast;
+use Spatie\LaravelData\Casts\DateTimeInterfaceCast;
 use Spatie\LaravelData\Data;
 
 class Submitter extends Data
@@ -12,10 +14,15 @@ class Submitter extends Data
     public string $uuid;
     public string $email;
     public string $slug;
+    #[WithCast(DateTimeInterfaceCast::class, format: 'Y-m-d\TH:i:sP')]
     public ?DateTime $sent_at;
+    #[WithCast(DateTimeInterfaceCast::class, format: 'Y-m-d\TH:i:sP')]
     public ?DateTime $opened_at;
+    #[WithCast(DateTimeInterfaceCast::class, format: 'Y-m-d\TH:i:sP')]
     public ?DateTime $completed_at;
+    #[WithCast(DateTimeInterfaceCast::class, format: 'Y-m-d\TH:i:sP')]
     public DateTime $created_at;
+    #[WithCast(DateTimeInterfaceCast::class, format: 'Y-m-d\TH:i:sP')]
     public DateTime $updated_at;
     public string $name;
     public ?string $phone;

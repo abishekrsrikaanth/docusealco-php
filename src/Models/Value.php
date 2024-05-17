@@ -2,8 +2,11 @@
 
 namespace DocuSealCo\DocuSeal\Models;
 
-class Value
+use Spatie\LaravelData\Data;
+
+class Value extends Data
 {
     public string $field;
+
     public string $value;
 }

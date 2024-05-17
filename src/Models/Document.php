@@ -2,7 +2,9 @@
 
 namespace DocuSealCo\DocuSeal\Models;
 
-class Document
+use Spatie\LaravelData\Data;
+
+class Document extends Data
 {
     public string $name;
 

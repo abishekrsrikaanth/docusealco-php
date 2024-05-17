@@ -2,14 +2,19 @@
 
 namespace DocuSealCo\DocuSeal\Models;
 
-use DateTimeInterface;
+use DateTime;
+use Spatie\LaravelData\Attributes\WithCast;
+use Spatie\LaravelData\Casts\DateTimeInterfaceCast;
+use Spatie\LaravelData\Data;
 
-class Template
+class Template extends Data
 {
     public int $id;
     public string $name;
     public ?string $external_id;
     public string $folder_name;
-    public DateTimeInterface $created_at;
-    public DateTimeInterface $updated_at;
+    #[WithCast(DateTimeInterfaceCast::class, format: 'Y-m-d\TH:i:sP')]
+    public DateTime $created_at;
+    #[WithCast(DateTimeInterfaceCast::class, format: 'Y-m-d\TH:i:sP')]
+    public DateTime $updated_at;
 }

@@ -2,7 +2,9 @@
 
 namespace DocuSealCo\DocuSeal\Models;
 
-class User
+use Spatie\LaravelData\Data;
+
+class User extends Data
 {
     public int $id;
     public string $first_name;
