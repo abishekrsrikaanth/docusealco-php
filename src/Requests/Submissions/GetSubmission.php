@@ -6,6 +6,7 @@ use CuyZ\Valinor\Mapper\MappingError;
 use DocuSealCo\DocuSeal\Models\Submission;
 use DocuSealCo\DocuSeal\Requests\Submissions\Concerns\HandlesDTOResponse;
 use JsonException;
+use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
 use Saloon\Http\Response;
@@ -16,7 +17,7 @@ use Saloon\Traits\Body\HasJsonBody;
  *
  * The API endpoint provides the functionality to retrieve information about a submission.
  */
-class GetSubmission extends Request
+class GetSubmission extends Request implements HasBody
 {
     use HandlesDTOResponse;
     use HasJsonBody;
