@@ -2,9 +2,10 @@
 
 namespace DocuSealCo\DocuSeal\Models;
 
-use DateTimeInterface;
+use DateTime;
+use Spatie\LaravelData\Data;
 
-class Submission
+class Submission extends Data
 {
     public int $id;
 
@@ -14,24 +15,24 @@ class Submission
 
     public string $submitters_order;
 
-    public DateTimeInterface $created_at;
+    public DateTime $created_at;
 
-    public DateTimeInterface $updated_at;
+    public DateTime $updated_at;
 
-    public ?DateTimeInterface $archived_at;
+    public ?DateTime $archived_at;
 
-    /** @var array<Submitter> */
+    /** @var Submitter[] */
     public array $submitters;
 
     public Template $template;
 
     public User $created_by_user;
 
-    /** @var array<SubmissionEvent> */
+    /** @var SubmissionEvent[] */
     public array $submission_events;
 
-    /** @var array<Document> */
+    /** @var Document[] */
     public array $documents;
     public string $status;
-    public ?DateTimeInterface $completed_at;
+    public DateTime $completed_at;
 }

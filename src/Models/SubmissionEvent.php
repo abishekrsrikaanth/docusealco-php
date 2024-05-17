@@ -2,9 +2,10 @@
 
 namespace DocuSealCo\DocuSeal\Models;
 
-use DateTimeInterface;
+use DateTime;
+use Spatie\LaravelData\Data;
 
-class SubmissionEvent
+class SubmissionEvent extends Data
 {
     public int $id;
 
@@ -12,5 +13,5 @@ class SubmissionEvent
 
     public string $event_type;
 
-    public DateTimeInterface $event_timestamp;
+    public DateTime $event_timestamp;
 }

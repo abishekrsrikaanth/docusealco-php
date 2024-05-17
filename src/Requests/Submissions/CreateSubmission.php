@@ -2,7 +2,6 @@
 
 namespace DocuSealCo\DocuSeal\Requests\Submissions;
 
-use CuyZ\Valinor\Mapper\MappingError;
 use DocuSealCo\DocuSeal\Models\Submitter;
 use DocuSealCo\DocuSeal\Requests\Models\Message;
 use DocuSealCo\DocuSeal\Requests\Submissions\Concerns\HandlesDTOResponse;
@@ -45,7 +44,6 @@ class CreateSubmission extends Request implements HasBody
     }
 
     /**
-     * @throws MappingError
      * @throws JsonException
      */
     public function createDtoFromResponse(Response $response): array
@@ -65,6 +63,6 @@ class CreateSubmission extends Request implements HasBody
             'submitters' => $this->submitters,
         ];
 
-        return array_filter($data, fn ($value) => !is_null($value));
+        return array_filter($data, fn ($value) => ! is_null($value));
     }
 }

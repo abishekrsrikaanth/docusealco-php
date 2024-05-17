@@ -2,7 +2,6 @@
 
 namespace DocuSealCo\DocuSeal\Requests\Submissions;
 
-use CuyZ\Valinor\Mapper\MappingError;
 use DocuSealCo\DocuSeal\Models\Submission;
 use DocuSealCo\DocuSeal\Requests\Submissions\Concerns\HandlesDTOResponse;
 use JsonException;
@@ -40,7 +39,6 @@ class GetSubmission extends Request implements HasBody
     /**
      * @param  Response  $response
      * @return Submission
-     * @throws MappingError
      * @throws JsonException
      */
     public function createDtoFromResponse(Response $response): Submission

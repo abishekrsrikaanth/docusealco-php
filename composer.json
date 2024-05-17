@@ -10,7 +10,7 @@
     "require": {
         "php": "^8.1",
         "saloonphp/saloon": "v3.x",
-        "cuyz/valinor": "^1.12"
+        "spatie/laravel-data": "^4.6"
     },
     "license": "MIT",
     "autoload": {
