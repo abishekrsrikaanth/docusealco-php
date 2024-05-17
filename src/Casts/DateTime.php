@@ -11,6 +11,6 @@ class DateTime implements Cast
 {
     public function cast(DataProperty $property, mixed $value, array $properties, CreationContext $context): mixed
     {
-        return Carbon::parse($value)->toDateTime();
+        return $value ? Carbon::parse($value)->toDateTime() : null;
     }
 }
