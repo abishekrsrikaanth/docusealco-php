@@ -2,6 +2,7 @@
 
 namespace DocuSealCo\DocuSeal\Resource;
 
+use DocuSealCo\DocuSeal\Models\Submission;
 use DocuSealCo\DocuSeal\Models\Submitter;
 use DocuSealCo\DocuSeal\Requests\Models\Message;
 use DocuSealCo\DocuSeal\Requests\Submissions\ArchiveSubmission;
@@ -64,7 +65,7 @@ class Submissions extends Resource
      * @throws FatalRequestException
      * @throws RequestException
      */
-    public function getSubmission(int $id): Response
+    public function getSubmission(int $id): Submission
     {
         return $this->connector->send(new GetSubmission($id))->dtoOrFail();
     }

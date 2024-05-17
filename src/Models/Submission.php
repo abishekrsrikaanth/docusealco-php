@@ -10,13 +10,15 @@ class Submission
 
     public string $source;
 
-    public string $audit_log_url;
+    public ?string $audit_log_url;
+
+    public string $submitters_order;
 
     public DateTimeInterface $created_at;
 
     public DateTimeInterface $updated_at;
 
-    public DateTimeInterface $archived_at;
+    public ?DateTimeInterface $archived_at;
 
     /** @var array<Submitter> */
     public array $submitters;
@@ -31,5 +33,5 @@ class Submission
     /** @var array<Document> */
     public array $documents;
     public string $status;
-    public DateTimeInterface $completed_at;
+    public ?DateTimeInterface $completed_at;
 }

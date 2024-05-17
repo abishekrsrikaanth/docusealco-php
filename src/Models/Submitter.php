@@ -28,5 +28,7 @@ class Submitter
     /** @var array<string,string|int|bool> */
     public array $preferences;
     public string $role;
-    public string $embed_src;
+    public ?string $embed_src;
+    /** @var string[]|array{name:string,url:string} */
+    public array $documents;
 }
