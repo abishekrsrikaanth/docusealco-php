@@ -18,11 +18,11 @@ class Submission extends Data
 
     public string $submitters_order;
 
-    #[WithCast(DateTimeInterfaceCast::class, type: CarbonImmutable::class)]
+    #[WithCast(DateTimeInterfaceCast::class, type: CarbonImmutable::class, format: DATE_ATOM)]
     public DateTime $created_at;
-    #[WithCast(DateTimeInterfaceCast::class, type: CarbonImmutable::class)]
+    #[WithCast(DateTimeInterfaceCast::class, type: CarbonImmutable::class, format: DATE_ATOM)]
     public DateTime $updated_at;
-    #[WithCast(DateTimeInterfaceCast::class, type: CarbonImmutable::class)]
+    #[WithCast(DateTimeInterfaceCast::class, type: CarbonImmutable::class, format: DATE_ATOM)]
     public ?DateTime $archived_at;
 
     /** @var Submitter[] */
@@ -39,6 +39,6 @@ class Submission extends Data
     public array $documents;
 
     public string $status;
-    #[WithCast(DateTimeInterfaceCast::class, type: CarbonImmutable::class)]
+    #[WithCast(DateTimeInterfaceCast::class, type: CarbonImmutable::class, format: DATE_ATOM)]
     public DateTime $completed_at;
 }

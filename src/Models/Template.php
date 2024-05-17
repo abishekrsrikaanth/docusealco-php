@@ -14,8 +14,8 @@ class Template extends Data
     public string $name;
     public ?string $external_id;
     public string $folder_name;
-    #[WithCast(DateTimeInterfaceCast::class, type: CarbonImmutable::class)]
+    #[WithCast(DateTimeInterfaceCast::class, type: CarbonImmutable::class, format: DATE_ATOM)]
     public DateTime $created_at;
-    #[WithCast(DateTimeInterfaceCast::class, type: CarbonImmutable::class)]
+    #[WithCast(DateTimeInterfaceCast::class, type: CarbonImmutable::class, format: DATE_ATOM)]
     public DateTime $updated_at;
 }

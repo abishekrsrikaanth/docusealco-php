@@ -15,15 +15,15 @@ class Submitter extends Data
     public string $uuid;
     public string $email;
     public string $slug;
-    #[WithCast(DateTimeInterfaceCast::class, type: CarbonImmutable::class)]
+    #[WithCast(DateTimeInterfaceCast::class, type: CarbonImmutable::class, format: DATE_ATOM)]
     public ?DateTime $sent_at;
-    #[WithCast(DateTimeInterfaceCast::class, type: CarbonImmutable::class)]
+    #[WithCast(DateTimeInterfaceCast::class, type: CarbonImmutable::class, format: DATE_ATOM)]
     public ?DateTime $opened_at;
-    #[WithCast(DateTimeInterfaceCast::class, type: CarbonImmutable::class)]
+    #[WithCast(DateTimeInterfaceCast::class, type: CarbonImmutable::class, format: DATE_ATOM)]
     public ?DateTime $completed_at;
-    #[WithCast(DateTimeInterfaceCast::class, type: CarbonImmutable::class)]
+    #[WithCast(DateTimeInterfaceCast::class, type: CarbonImmutable::class, format: DATE_ATOM)]
     public DateTime $created_at;
-    #[WithCast(DateTimeInterfaceCast::class, type: CarbonImmutable::class)]
+    #[WithCast(DateTimeInterfaceCast::class, type: CarbonImmutable::class, format: DATE_ATOM)]
     public DateTime $updated_at;
     public string $name;
     public ?string $phone;

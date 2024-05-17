@@ -15,6 +15,6 @@ class SubmissionEvent extends Data
     public int $submitter_id;
 
     public string $event_type;
-    #[WithCast(DateTimeInterfaceCast::class, type: CarbonImmutable::class)]
+    #[WithCast(DateTimeInterfaceCast::class, type: CarbonImmutable::class, format: DATE_ATOM)]
     public DateTime $event_timestamp;
 }
