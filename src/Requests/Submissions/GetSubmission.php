@@ -2,8 +2,14 @@
 
 namespace DocuSealCo\DocuSeal\Requests\Submissions;
 
+use CuyZ\Valinor\Mapper\MappingError;
+use DocuSealCo\DocuSeal\Models\Submission;
+use DocuSealCo\DocuSeal\Requests\Submissions\Concerns\HandlesDTOResponse;
+use JsonException;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
+use Saloon\Http\Response;
+use Saloon\Traits\Body\HasJsonBody;
 
 /**
  * Get a submission
@@ -12,20 +18,32 @@ use Saloon\Http\Request;
  */
 class GetSubmission extends Request
 {
+    use HandlesDTOResponse;
+    use HasJsonBody;
+
     protected Method $method = Method::GET;
 
+    /**
+     * @param  int  $id  The unique identifier of the submission.
+     */
+    public function __construct(
+        protected int $id,
+    ) {
+    }
 
     public function resolveEndpoint(): string
     {
         return "/submissions/{$this->id}";
     }
 
-
     /**
-     * @param int $id The unique identifier of the submission.
+     * @param  Response  $response
+     * @return Submission
+     * @throws MappingError
+     * @throws JsonException
      */
-    public function __construct(
-        protected int $id,
-    ) {
+    public function createDtoFromResponse(Response $response): Submission
+    {
+        return $this->toDTO($response->json(), Submission::class);
     }
 }

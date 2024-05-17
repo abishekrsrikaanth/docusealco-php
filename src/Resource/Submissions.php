@@ -66,7 +66,7 @@ class Submissions extends Resource
      */
     public function getSubmission(int $id): Response
     {
-        return $this->connector->send(new GetSubmission($id));
+        return $this->connector->send(new GetSubmission($id))->dtoOrFail();
     }
 
     /**
