@@ -2,10 +2,9 @@
 
 namespace DocuSealCo\DocuSeal\Models;
 
-use Carbon\CarbonImmutable;
 use DateTime;
+use DocuSealCo\DocuSeal\Casts\DateTime as DateTimeCast;
 use Spatie\LaravelData\Attributes\WithCast;
-use Spatie\LaravelData\Casts\DateTimeInterfaceCast;
 use Spatie\LaravelData\Data;
 
 class Submission extends Data
@@ -18,11 +17,11 @@ class Submission extends Data
 
     public string $submitters_order;
 
-    #[WithCast(DateTimeInterfaceCast::class, type: CarbonImmutable::class, format: "Y-m-d\TH:i:sO")]
+    #[WithCast(DateTimeCast::class)]
     public DateTime $created_at;
-    #[WithCast(DateTimeInterfaceCast::class, type: CarbonImmutable::class, format: "Y-m-d\TH:i:sO")]
+    #[WithCast(DateTimeCast::class)]
     public DateTime $updated_at;
-    #[WithCast(DateTimeInterfaceCast::class, type: CarbonImmutable::class, format: "Y-m-d\TH:i:sO")]
+    #[WithCast(DateTimeCast::class)]
     public ?DateTime $archived_at;
 
     /** @var Submitter[] */
@@ -39,6 +38,6 @@ class Submission extends Data
     public array $documents;
 
     public string $status;
-    #[WithCast(DateTimeInterfaceCast::class, type: CarbonImmutable::class, format: "Y-m-d\TH:i:sO")]
+    #[WithCast(DateTimeCast::class)]
     public DateTime $completed_at;
 }
