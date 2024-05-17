@@ -2,6 +2,7 @@
 
 namespace DocuSealCo\DocuSeal\Models;
 
+use Carbon\CarbonImmutable;
 use DateTime;
 use Spatie\LaravelData\Attributes\WithCast;
 use Spatie\LaravelData\Casts\DateTimeInterfaceCast;
@@ -13,8 +14,8 @@ class Template extends Data
     public string $name;
     public ?string $external_id;
     public string $folder_name;
-    #[WithCast(DateTimeInterfaceCast::class, format: 'Y-m-d\TH:i:sP')]
+    #[WithCast(DateTimeInterfaceCast::class, type: CarbonImmutable::class)]
     public DateTime $created_at;
-    #[WithCast(DateTimeInterfaceCast::class, format: 'Y-m-d\TH:i:sP')]
+    #[WithCast(DateTimeInterfaceCast::class, type: CarbonImmutable::class)]
     public DateTime $updated_at;
 }

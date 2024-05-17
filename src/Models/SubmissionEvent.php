@@ -2,6 +2,7 @@
 
 namespace DocuSealCo\DocuSeal\Models;
 
+use Carbon\CarbonImmutable;
 use DateTime;
 use Spatie\LaravelData\Attributes\WithCast;
 use Spatie\LaravelData\Casts\DateTimeInterfaceCast;
@@ -14,6 +15,6 @@ class SubmissionEvent extends Data
     public int $submitter_id;
 
     public string $event_type;
-    #[WithCast(DateTimeInterfaceCast::class, format: 'Y-m-d\TH:i:sP')]
+    #[WithCast(DateTimeInterfaceCast::class, type: CarbonImmutable::class)]
     public DateTime $event_timestamp;
 }
