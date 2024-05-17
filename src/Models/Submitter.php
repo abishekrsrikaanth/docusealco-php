@@ -6,6 +6,7 @@ use DateTime;
 use DocuSealCo\DocuSeal\Casts\DateTime as DateTimeCast;
 use Spatie\LaravelData\Attributes\WithCast;
 use Spatie\LaravelData\Data;
+use Spatie\LaravelData\Optional;
 
 class Submitter extends Data
 {
@@ -19,7 +20,7 @@ class Submitter extends Data
     #[WithCast(DateTimeCast::class)]
     public ?DateTime $opened_at;
     #[WithCast(DateTimeCast::class)]
-    public ?DateTime $completed_at;
+    public DateTime|Optional $completed_at;
     #[WithCast(DateTimeCast::class)]
     public DateTime $created_at;
     #[WithCast(DateTimeCast::class)]
@@ -33,7 +34,7 @@ class Submitter extends Data
     public array $values;
     public array $preferences;
     public string $role;
-    public ?string $embed_src;
+    public string|Optional $embed_src;
     /** @var Document[] */
-    public array $documents;
+    public array|Optional $documents;
 }
