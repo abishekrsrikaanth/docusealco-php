@@ -20,7 +20,7 @@ class Submitter extends Data
     #[WithCast(DateTimeCast::class)]
     public ?DateTime $opened_at;
     #[WithCast(DateTimeCast::class)]
-    public DateTime|Optional $completed_at;
+    public ?DateTime $completed_at;
     #[WithCast(DateTimeCast::class)]
     public DateTime $created_at;
     #[WithCast(DateTimeCast::class)]

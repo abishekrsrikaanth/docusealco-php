@@ -39,5 +39,5 @@ class Submission extends Data
 
     public string $status;
     #[WithCast(DateTimeCast::class)]
-    public DateTime $completed_at;
+    public ?DateTime $completed_at;
 }
