@@ -2,9 +2,10 @@
 
 namespace DocuSealCo\DocuSeal\Requests\Submissions;
 
+use DocuSealCo\DocuSeal\Concerns\HandlesDataFilter;
+use DocuSealCo\DocuSeal\Concerns\HandlesDTOResponse;
 use DocuSealCo\DocuSeal\Models\Submitter;
 use DocuSealCo\DocuSeal\Requests\Models\Message;
-use DocuSealCo\DocuSeal\Requests\Submissions\Concerns\HandlesDTOResponse;
 use JsonException;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
@@ -20,6 +21,7 @@ use Saloon\Traits\Body\HasJsonBody;
  */
 class CreateSubmission extends Request implements HasBody
 {
+    use HandlesDataFilter;
     use HandlesDTOResponse;
     use HasJsonBody;
 
@@ -63,6 +65,6 @@ class CreateSubmission extends Request implements HasBody
             'submitters' => $this->submitters,
         ];
 
-        return array_filter($data, fn ($value) => ! is_null($value));
+        return $this->handleNullData($data);
     }
 }

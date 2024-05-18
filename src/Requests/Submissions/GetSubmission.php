@@ -2,8 +2,8 @@
 
 namespace DocuSealCo\DocuSeal\Requests\Submissions;
 
+use DocuSealCo\DocuSeal\Concerns\HandlesDTOResponse;
 use DocuSealCo\DocuSeal\Models\Submission;
-use DocuSealCo\DocuSeal\Requests\Submissions\Concerns\HandlesDTOResponse;
 use JsonException;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;

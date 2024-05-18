@@ -1,6 +1,6 @@
 <?php
 
-namespace DocuSealCo\DocuSeal\Requests\Submissions\Concerns;
+namespace DocuSealCo\DocuSeal\Concerns;
 
 trait HandlesDTOResponse
 {
